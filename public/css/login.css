@@ -1,0 +1,123 @@
+body {
+    background-image: url('../img/bg.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+
+.logo {
+    padding: 30px;
+    width: 100%;
+    color: white;
+    position: fixed;
+}
+.logo p{
+    margin: 0;
+}
+.logo p:first-child{
+    font-size: 30px;
+    font-weight: 500;
+}
+.logo p:last-child{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.flip {
+    position: absolute;
+    top: calc(45% - 150px);
+    left: calc(50% - 250px);
+    text-align: center;
+    transform:translate3d(0,0,0);
+}
+.flip-box {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+.flip-item {
+    position:absolute;
+    left:0;
+    top:0;
+    transition:all .7s ease-in-out;
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+    box-sizing: border-box;
+}
+.flip-item-front {
+    transform:rotateY(0deg);
+    z-index:2;
+}
+.flip-item-back {
+    transform:rotateY(180deg);
+    z-index:1;
+}
+
+.login-block {
+    height: 300px;
+    width: 500px;
+}
+.sign-block {
+    height: 400px;
+    width: 600px;
+}
+.login-block,.sign-block {
+    padding: 40px;
+    background:rgba(255,255,255,0.2);
+}
+.login-block table,.sign-block table {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+}
+.login-block table td,.sign-block table td {
+    padding-bottom: 20px;
+}
+.login-title,.sign-title {
+    font-size: 26px;
+    color: white;
+}
+.login-username,.login-password,.sign-schoolNo,.sign-password,.sign-name {
+    padding: 0;
+    text-align: left;
+    color: white;
+    font-size: 14px;
+    line-height: 35px;
+}
+.login-tip,.sign-tip {
+    color: white;
+}
+.login-tip a,.sign-tip a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+.login-username input,.login-password input,.sign-schoolNo input,.sign-password input,.sign-name input {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+.login-tip td:first-child,.sign-tip td:first-child{
+    width: 80%;
+    text-align: left;
+}
+.login-tip td:last-child,.sign-tip td:last-child{
+    width: 20%;
+    text-align: right;
+}
+.login-btn {
+    padding: 6px 15px;
+    background-color: red;
+    border-radius: 5px;
+}
+
+
+
