@@ -48,25 +48,33 @@
             <div class="sign-block flip-item flip-item-back">
                 <table>
                     <tr>
-                        <td class="sign-title" colspan="3">注册</td>
+                        <td class="sign-title" colspan="4">注册</td>
                     </tr>
                     <tr class="sign-schoolNo">
                         <td width="20%">学&nbsp;&nbsp;号：</td>
                         <td colspan="2">
-                            <input type="text">
+                            <input type="text"> *
                         </td>
-                        <td class="" rowspan="4">333</td>
+                        <td rowspan="4" style="vertical-align:text-bottom;">
+                            <label class="imgUpload">
+                                <input type="file" style="display:none">
+                                <span>
+                                    +
+                                    <p style="font-size: 10px;">(个人头像)*</p>
+                                </span>
+                            </label>
+                        </td>
                     </tr>
                     <tr class="sign-password">
                         <td width="20%">密&nbsp;&nbsp;码：</td>
                         <td colspan="2">
-                            <input type="password">
+                            <input type="password"> *
                         </td>
                     </tr>
                     <tr class="sign-name">
                         <td width="20%">姓&nbsp;&nbsp;名：</td>
                         <td colspan="2">
-                            <input type="text">
+                            <input type="text"> *
                         </td>
                     </tr>
                     <tr class="sign-name">
@@ -75,15 +83,15 @@
                             <select>
                                 <option value ="0">男</option>
                                 <option value ="1">女</option>
-                            </select>
+                            </select> *
                         </td>
                     </tr>
                     <tr class="sign-tip">
                         <td colspan="3">
-                            <a href="javascript:void(0)">返回登录</a> | <input type="checkbox" name="approve" class="approve"> <a href="javascript:void(0)">同意GKAPI协议</a>
+                            <a class="login" href="javascript:void(0)">返回登录</a> | <input type="checkbox" name="approve" class="approve"> 同意<a class="protocal" href="javascript:void(0)">《GKAPI协议》</a>
                         </td>
                         <td>
-                            <a class="login-btn" href="javascript:void(0)">登录</a>
+                            <a class="sign-btn" href="javascript:void(0)">注册</a>
                         </td>
                     </tr>
                 </table>
