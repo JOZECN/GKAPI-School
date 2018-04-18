@@ -1,0 +1,174 @@
+body {
+    margin: 0;
+    background-color: #eee;
+}
+input {
+    height: 25px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    outline: none;
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+
+.logo {
+    padding: 15px 15%;
+    width: 100%;
+    color: black;
+    background-color: white;
+    position: fixed;
+    border-bottom: 1px solid #eee;
+}
+.logo p{
+    margin: 0;
+}
+.logo p:first-child{
+    font-size: 23px;
+    font-weight: 500;
+}
+.logo p:last-child{
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.user-box {
+    width: 100%;
+    padding: 80px 15% 5% 15%;
+    box-sizing: border-box;
+}
+
+.user-block-left {
+    padding: 20px;
+    width: 250px;
+    color: black;
+    font-size: 14px;
+    background-color: white;
+    border: 1px #ddd solid;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: fixed;
+}
+.user-block-left .user-img {
+    padding-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+.user-block-left .user-img .userImg-cover {
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    border: 3px #ddd solid;
+    border-radius: 60%;
+    overflow: hidden;
+}
+.user-block-left .user-img .userImg-cover img {
+    width: 100%;
+    height: auto;
+}
+.user-block-left .user-lastTime,.user-block-left .user-completion,.user-block-left .user-times,.user-block-left .user-status,.user-block-left .loginout-btn {
+    padding: 5px 0;
+}
+.user-block-left .user-completion .bar {
+    margin-left: -7px;
+    border-bottom: 10px solid #eee;
+    display: inline-block;
+    width: 90px;
+    border-radius: 3px;
+    z-index: 1;
+    position: relative;
+}
+.user-block-left .user-completion .bar .bar-line {
+    border-bottom: 10px solid red;
+    width: 30%;
+    border-radius: 3px;
+    z-index: 2;
+    position: absolute;
+}
+.user-block-left .loginout-btn {
+    padding: 15px 0 0 0;
+    width: 100%;
+    text-align: center;
+}
+.user-block-left .loginout-btn a {
+    padding: 9px 10px 5px 10px;
+    color: #ddd;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.user-block-left .loginout-btn a:hover {
+    color: red;
+    border: 1px solid red;
+}
+
+.user-block-right {
+    padding-left: 260px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.user-block-right .user-info {
+    padding: 20px;
+    width: 100%;
+    color: black;
+    font-size: 14px;
+    background-color: white;
+    border: 1px #ddd solid;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.user-block-right .user-title {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+}
+.user-block-right .left {
+    padding: 10px 0;
+    width: 49%;
+    display: inline-block;
+    line-height: 25px;
+    vertical-align: text-top;
+}
+.user-block-right .left span:first-child {
+    width: 80px;
+    display: inline-block;
+    position: absolute;
+}
+.user-block-right .left span:last-child {
+    width: 100%;
+    padding-left: 80px;
+}
+.user-block-right .user-img img {
+    padding: 5px;
+    max-height: 100px;
+    width: auto;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+}
+.user-block-right .user-department {
+    width: 100%;
+}
+.user-block-right .user-password-old,.user-block-right .user-password-new {
+    display: none;
+}
+
+.bottom {
+    padding: 10px 0px 0px 0px;
+    width: 100%;
+    text-align: center;
+}
+.bottom a {
+    color: white;
+    outline: none;
+    padding: 9px 10px 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.bottom .revise-btn {
+    background-color: red;
+    display: inline-block;
+}
+.bottom .save-btn {
+    background-color: #2196f3;
+    display: none;
+}

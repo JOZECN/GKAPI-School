@@ -1,0 +1,200 @@
+body {
+    margin: 0;
+    background-color: #eee;
+}
+
+.logo {
+    padding: 15px 15%;
+    width: 100%;
+    color: black;
+    background-color: white;
+    position: fixed;
+    border-bottom: 1px solid #eee;
+}
+.logo p{
+    margin: 0;
+}
+.logo p:first-child{
+    font-size: 23px;
+    font-weight: 500;
+}
+.logo p:last-child{
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.user-block {
+    width: 100%;
+    padding: 80px 15% 5% 15%;
+    box-sizing: border-box;
+    text-align: center;
+}
+.top {
+    padding: 20px;
+    background-color: white;
+}
+.top .title {
+    font-size: 26px;
+    margin: 15px 0px;
+}
+.top .search-block {
+    font-size: 18px;
+    line-height: 20px;
+}
+.top .search-block select {
+    width: 80px;
+    font-size: 14px;
+}
+.top .search-block .keyword {
+    margin: 0px 10px;
+    padding: 3px 5px;
+    width: 150px;
+    border: 1px #ddd solid;
+    border-radius: 3px;
+    outline: none;
+}.top .search-block .keyword:focus {
+    border-color: #8f8f8f;
+}
+.top .search-block .search-btn {
+    padding: 3px 10px;
+    background-color: white;
+    border: 1px #ddd solid;
+    border-radius: 3px;
+    outline: none;
+}
+.top .search-block .search-btn:hover {
+    border-color: #8f8f8f;
+}
+
+.result-block {
+    padding: 0px 20px 20px 20px;
+    background-color: white;
+}
+.result-block .title {
+    padding: 0 10px 10px 10px;
+    width: 100%;
+    font-size: 0;
+    border-bottom: 1px #eee solid;
+    box-sizing: border-box;
+}
+.result-block .title span {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.result-block .title>span:first-child {
+    width: 5%;
+}
+.result-block .title>span:nth-child(2) {
+    width: 15%;
+}
+.result-block .title>span:nth-child(3) {
+    width: 20%;
+}
+.result-block .title>span:nth-child(4) {
+    width: 20%;
+}
+.result-block .title>span:nth-child(5) {
+    width: 25%;
+}
+.result-block .title>span:last-child {
+    width: 15%;
+}
+.result-block .result-list {
+    width: 100%;
+    box-sizing: border-box;
+}
+.result-block .result-list .result {
+    padding: 15px 10px;
+    font-size: 0;
+    border-bottom: 1px #eee solid;
+}
+.result-block .result-list .result a {
+    text-decoration: none;
+    color: blue;
+}
+.result-block .result-list .result a:hover {
+    color: red;
+}
+.result-block .result-list .result:hover {
+    background-color: #eeeeee;
+}
+.result-block .result-list .result span {
+    display: inline-block;
+    font-size: 14px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.result-block .result-list .result>span:first-child {
+    width: 5%;
+}
+.result-block .result-list .result>span:nth-child(2) {
+    width: 15%;
+}
+.result-block .result-list .result>span:nth-child(3) {
+    width: 20%;
+}
+.result-block .result-list .result>span:nth-child(4) {
+    width: 20%;
+}
+.result-block .result-list .result>span:nth-child(5) {
+    width: 25%;
+}
+.result-block .result-list .result>span:last-child {
+    width: 15%;
+}
+.result-block .result-list .result>span:last-child a{
+    text-decoration: none;
+}
+.result-block .loading {
+    padding: 5px 0;
+}
+.result-block .loading .circle {
+    width: 18px;
+    border: 2px solid skyblue;
+    height: 18px;
+    border-radius: 100px;
+    margin: 5px auto;
+    position: relative;
+    animation: roate 1.5s infinite linear;
+}
+.result-block .loading .circle::after {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: 2;
+    background-image: linear-gradient(to left, #fefefe, rgba(255, 255, 255, .1));
+}
+.result-block .loading .circle::before {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 11px;
+    position: absolute;
+    z-index: 3;
+    background-color: #fefefe;
+    top: -2px;
+    left: -2px;
+}
+@keyframes roate {
+    0% {
+        transform: rotateZ(0)
+    }
+    100% {
+        transform: rotateZ(360deg)
+    }
+}
+.result-block .noResult {
+    padding-top: 20px;
+    font-size: 16px;
+}

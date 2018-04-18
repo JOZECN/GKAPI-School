@@ -83,7 +83,7 @@ body {
     font-size: 26px;
     color: white;
 }
-.login-username,.login-password,.sign-schoolNo,.sign-password,.sign-name {
+.login-username,.login-password,.sign-schoolNo,.sign-password,.sign-name,.sign-card {
     padding: 0;
     text-align: left;
     color: white;
@@ -107,7 +107,7 @@ body {
     padding: 5px 10px;
     box-sizing: border-box;
 }
-.sign-schoolNo input,.sign-password input,.sign-name input {
+.sign-schoolNo input,.sign-password input,.sign-name input,.sign-card input {
     width: 90%;
     height: 35px;
     border: none;

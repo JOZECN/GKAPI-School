@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GKAPI-入门记录</title>
+    <link rel="stylesheet" type="text/css" href="static/css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/record.css">
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/record.js"></script>
+</head>
+<body>
+    <div class="logo">
+        <p>GKAPI 后台管理系统</p>
+        <p>GKAPI Backstage Management System</p>
+    </div>
+    <div class="record-box">
+        <div class="top">
+            <div class="title">
+                <strong class="driveNo">001a</strong>
+                入门记录
+            </div>
+            <div class="search-block">
+                筛选：
+                <select>
+                    <option value="1">姓名</option>
+                    <option value="2">学号</option>
+                    <option value="3">时间</option>
+                </select>
+                <input type="text" class="keyword" placeholder="请输入学生姓名">
+                <button class="search-btn">搜索</button>
+            </div>
+        </div>
+        <div class="result-block">
+            <div class="title">
+                <span>姓名</span>
+                <span>学号</span>
+                <span>时间</span>
+                <span>图片地址</span>
+            </div>
+            <div class="result-list">
+                <div class="result">
+                    <span>周某某</span>
+                    <span>201804150000</span>
+                    <span>2018-04-15 09:00</span>
+                    <span><a href="http://gkapi.jozecn.cn/public/upload/img/01.jpg">http://gkapi.jozecn.cn/public/upload/img/01.jpg</a></span>
+                </div>
+                <div class="result">
+                    <span>周某某</span>
+                    <span>201804150000</span>
+                    <span>2018-04-15 09:00</span>
+                    <span><a href="http://gkapi.jozecn.cn/public/upload/img/01.jpg">http://gkapi.jozecn.cn/public/upload/img/01.jpg</a></span>
+                </div>
+                <div class="result">
+                    <span>周某某</span>
+                    <span>201804150000</span>
+                    <span>2018-04-15 09:00</span>
+                    <span><a href="http://gkapi.jozecn.cn/public/upload/img/01.jpg">http://gkapi.jozecn.cn/public/upload/img/01.jpg</a></span>
+                </div>
+            </div>
+            <div class="loading">
+                <div class="circle"></div>
+            </div>
+            <div class="noResult">
+                未查询到数据
+            </div>
+        </div>
+    </div>
+</body>
+</html>
