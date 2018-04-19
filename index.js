@@ -2,9 +2,10 @@
 require('dotenv').load();
 var bodyParser = require('body-parser');
 var express = require('express');
+var fs = require('fs');
 var path = require('path');
 var swig = require('swig');
-var logger = require('morgan');
+var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var app = express();
 
@@ -15,7 +16,9 @@ var port = initConfig.network.port;
 var main = require('./routers/main');
 var userApi = require('./routers/api/userApi');
 
-app.use(logger('dev'));
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
+app.use(morgan('short', {stream: accessLogStream}));
+
 app.use(cookieParser());
 //bodyParser配置
 app.use(bodyParser.json());

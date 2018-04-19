@@ -1,0 +1,5 @@
+::1 - GET /ad/userlist HTTP/1.1 304 - - 12.537 ms
+::1 - GET /ad/static/css/normalize.css HTTP/1.1 304 - - 14.869 ms
+::1 - GET /ad/static/css/userList.css HTTP/1.1 304 - - 13.072 ms
+::1 - GET /ad/static/js/jquery-3.2.1.min.js HTTP/1.1 304 - - 12.444 ms
+::1 - GET /ad/static/js/userList.js HTTP/1.1 304 - - 12.244 ms
