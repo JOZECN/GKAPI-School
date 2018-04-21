@@ -15,23 +15,47 @@ router.post("/register", function(req, res, next){
         });
         return;
     }else {
-        var salt = crypto.randomBytes(16).toString('hex');
-        var hash = crypto.pbkdf2Sync(req.body.pwd, this.salt,1000,64).toString('hex');
-        new User({
-            sname : req.body.sname,
-            sid : req.body.sid,
-            salt: salt,
-            hash: hash,
-            sex: req.body.sex,
-            img: req.body.img
-        }).save().then(function(){
-            responseData.code = 1;
-            responseData.message = '注册成功';
-            res.json({
-                status: 1,
-                msg: "注册成功！"
-            });
-            return;
+        User.find({"sid":req.body.sid}).then(function(rs){
+            if(rs != ''){
+                res.json({
+                    status: 0,
+                    msg: "该学号已存在！"
+                });
+                return;
+            }else {
+                var regno;
+                User.find({},{ regno: 1, _id: 0 }).then(function(rs){
+                    if(rs != ''){
+                        var rslength = Object.keys(rs).length;
+                        var max = rs[0].regno;
+                        for(var i=0;i<rslength;i++){
+                            max = max > rs[i].regno ? max : rs[i].regno;
+                        }
+                        regno = max + 1;
+                    }
+                    else {
+                        regno = 0;
+                    }
+                }).then(function(){
+                    var salt = crypto.randomBytes(16).toString('hex');
+                    var hash = crypto.pbkdf2Sync(req.body.pwd,salt,1000,64,'sha512').toString('hex');
+                    new User({
+                        sname : req.body.sname,
+                        sid : req.body.sid,
+                        salt: salt,
+                        hash: hash,
+                        sex: req.body.sex,
+                        img: req.body.img,
+                        regno: regno
+                    }).save().then(function(){
+                        res.json({
+                            status: 1,
+                            msg: "注册成功！"
+                        });
+                        return;
+                    })
+                })
+            }
         })
     }
 })
@@ -49,7 +73,7 @@ router.post("/login", function(req, res, next){
             sid: req.body.sid
         }).then(function(rs){
             if(rs != ''){
-                var hash = crypto.pbkdf2Sync(req.body.pwd, rs.salt, 1000, 64).toString('hex');
+                var hash = crypto.pbkdf2Sync(req.body.pwd,rs.salt,1000,64,'sha512').toString('hex');
                 if(hash === rs.hash){
                     var expiry = new Date();
                     expiry.setDate(expiry.getDate() + 7);
@@ -59,12 +83,19 @@ router.post("/login", function(req, res, next){
                         img: rs.img,
                         exp: parseInt(expiry.getTime()/1000
                     )}, process.env.JWT_SECRET );
-                    res.json({
-                        status: 1,
-                        msg: "登录成功！",
-                        token: token
-                    });
-                    return;
+                    User.update({
+                        sid: rs.sid
+                    },{
+                        lasttime : Date.now,
+                        token : token
+                    }).then(function(){
+                        res.json({
+                            status: 1,
+                            msg: "登录成功！",
+                            token: token
+                        });
+                        return;
+                    })
                 }else {
                     res.json({
                         status: 0,

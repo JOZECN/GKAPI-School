@@ -5,21 +5,21 @@ var userSchema = new mongoose.Schema({
     hash: { type: String, require: true },
     salt: { type: String, require: true },
     sid: { type: String, unique: true, require: true },
-    sex: { type: Number, default: 0 },
+    sex: { type: Number, enum: [0, 1], default: 0 },
     card: { type: String, require: true },
     img: { type: String, require: true },
     major: { type: String, default: '' },
     identity: { type: String, default: '' },
     department: { type: String, default: '' },
-    uid: { type: String, unique: true, require: false },
-    lasttime: { type: Date },
+    uid: { type: String },
+    lasttime: { type: Date, default: Date.now },
     token: { type: String, default: '' },
-    level: { type: Number, default: 0 },
-    regno: { type: Number },
+    level: { type: Number, enum: [0, 1, 2, 3],default: 0 },
+    regno: { type: Number, required: true },
     regtime: { type: Date, default: Date.now },
-    update: { type: Number, default: 0 },
-    approve: { type: Number, default: 0 }
+    update: { type: Number, enum: [0, 1], default: 0 },
+    approve: { type: Number, enum: [0, 1], default: 0 }
 });
 
 mongoose.Promise = global.Promise;
-mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);

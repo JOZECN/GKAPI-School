@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var dbURI = 'mongodb://localhost:27017/node_gkapi';
+var dbURI = 'mongodb://gkapi:440803@localhost:27017/node_gkapi';
 mongoose.connect(dbURI);
 
 // 连接事件
