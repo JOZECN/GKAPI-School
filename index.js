@@ -19,7 +19,9 @@ var userApi = require('./routers/api/userApi');
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
 app.use(morgan('short', {stream: accessLogStream}));
 
-app.use(cookieParser());
+//设置cookie,其中()里面的是密钥
+app.use(cookieParser("gkapi"));
+
 //bodyParser配置
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

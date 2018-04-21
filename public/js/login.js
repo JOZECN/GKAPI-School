@@ -13,17 +13,25 @@ $(function() {
     });
 
     $('.login-btn').click(function(){
-        $.ajax({
-            type: 'post',
-            url: '/api/user/login',
-            data: {
-                control: $.trim($('.controlValue').val())
-            },
-            dataType: 'json',
-            success: function () {
-                alert('success!');
-                $('.controlName').text(response.data.control)
-            }
-        })
+        if(!$.trim($('.login-username input').val()) || !$.trim($('.login-password input').val())){
+            alert("请填写完整");
+        }else{
+            $.ajax({
+                type: 'post',
+                url: '/api/user/login',
+                data: {
+                    sid: $.trim($('.login-username input').val()),
+                    pwd: $.trim($('.login-password input').val())
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if(response.status != 1){
+                        alert(response.msg);
+                    }else{
+                        alert(response.msg);
+                    }
+                }
+            })
+        }
     })
 })

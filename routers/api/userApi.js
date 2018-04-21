@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const formidable = require('formidable');
+var express = require('express');
+var router = express.Router();
+var formidable = require('formidable');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
@@ -79,20 +79,28 @@ router.post("/login", function(req, res, next){
                     expiry.setDate(expiry.getDate() + 7);
                     var token = jwt.sign({
                         sid: rs.sid,
-                        sname: rs.sname,
-                        img: rs.img,
-                        exp: parseInt(expiry.getTime()/1000
-                    )}, process.env.JWT_SECRET );
+                        refreshtime : Date.getDate,
+                        exp: parseInt(expiry.getTime()/1000)
+                    }, process.env.JWT_SECRET );
                     User.update({
                         sid: rs.sid
                     },{
-                        lasttime : Date.now,
+                        lasttime : Date.getDate,
                         token : token
                     }).then(function(){
+                        var maxAge;
+                        if(req.body.rem){
+                            maxAge = 1000*60*60*24*7;
+                        }else{
+                            maxAge = 1000*60*60*1;
+                        }
+                        res.cookie("GK_value",{"token": token},{maxAge:maxAge});
+                        if (req.cookies["GK_value"]){
+                            res.locals.GK_value = req.cookies.GK_value.token;
+                        }
                         res.json({
                             status: 1,
-                            msg: "登录成功！",
-                            token: token
+                            msg: "登录成功！"
                         });
                         return;
                     })
@@ -100,7 +108,8 @@ router.post("/login", function(req, res, next){
                     res.json({
                         status: 0,
                         msg: "账号或密码错误！"
-                    })
+                    });
+                    return;
                 }
             }else {
                 res.json({
