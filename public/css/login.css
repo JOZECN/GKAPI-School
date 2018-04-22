@@ -60,43 +60,44 @@ body {
 .login-block,.sign-block {
     width: 500px;
 }
+
+.login-block .login-title {
+    font-size: 26px;
+    color: white;
+    margin-bottom: 10px;
+}
 .login-block {
     padding: 40px;
     background:rgba(255,255,255,0.2);
 }
-.sign-block {
-    padding: 20px;
-    background:rgba(255,255,255,0.2);
-}
-.login-block table {
+.login-block>div {
     width: 80%;
     margin: 0 auto;
+    font-size: 0;
 }
-.sign-block table {
-    width: 100%;
-    margin: 0 auto;
-}
-.login-block table td,.sign-block table td {
-    padding-bottom: 20px;
-}
-.login-title,.sign-title {
-    font-size: 26px;
-    color: white;
-}
-.login-username,.login-password,.remember,.sign-schoolNo,.sign-password,.sign-name,.sign-card {
-    padding: 0;
-    text-align: left;
-    color: white;
+.login-block .left {
+    padding: 10px 0;
+    width: 20%;
+    display: inline-block;
     font-size: 14px;
     line-height: 35px;
 }
-.login-tip,.sign-tip {
-    color: white;
-}
-.login-tip a,.sign-tip a{
-    color: white;
-    text-decoration: none;
+.login-block .right {
+    padding: 9px 0;
+    width: 80%;
+    display: inline-block;
     font-size: 14px;
+    line-height: 35px;
+}
+.login-block .login-tip .left {
+    padding: 0;
+    width: 80%;
+    text-align: left;
+}
+.login-block .login-tip .right {
+    padding: 0;
+    width: 20%;
+    text-align: right;
 }
 .login-username input,.login-password input {
     width: 100%;
@@ -106,6 +107,86 @@ body {
     outline: none;
     padding: 5px 10px;
     box-sizing: border-box;
+}
+.login-username,.login-password,.remember {
+    padding: 0;
+    text-align: left;
+    color: white;
+}
+.login-tip {
+    color: white;
+}
+.login-tip a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+.sign-block {
+    padding: 20px;
+    background:rgba(255,255,255,0.2);
+    font-size: 0;
+}
+.sign-block .sign-title {
+    font-size: 26px;
+    color: white;
+    margin-bottom: 10px;
+}
+.sign-block>.left {
+    width: 80%;
+    display: inline-block;
+}
+.sign-block>.right {
+    width: 20%;
+    display: inline-block;
+    font-size: 14px;
+    color: white;
+    vertical-align: top;
+}
+.sign-block>.left .left {
+    width: 20%;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 35px;
+}
+.sign-block>.left .right {
+    width: 80%;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 35px;
+}
+.sign-schoolNo,.sign-password,.sign-name,.sign-sex,.sign-card {
+    padding: 10px 0;
+    text-align: left;
+    color: white;
+}
+.sign-schoolNo {
+    padding-top: 0;
+}
+.sign-tip {
+    padding-top: 10px;
+    font-size: 0;
+    color: white;
+}
+.sign-tip .left {
+    width: 80%;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: left;
+}
+.sign-tip .right {
+    width: 20%;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: right;
+}
+.sign-tip a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
 }
 .sign-schoolNo input,.sign-password input,.sign-name input,.sign-card input {
     width: 90%;
@@ -133,11 +214,13 @@ body {
     min-width: 60px;
     max-width: 90px;
     height: auto;
-    min-height: 80px;
+    min-height: 60px;
     max-height: 120px;
+    line-height: 1;
     border: 1px solid #ddd;
     display: block;
     text-align: center;
+    cursor: pointer;
 }
 .sign-block .imgUpload span {
     margin: 0 auto;
@@ -145,6 +228,10 @@ body {
     font-size: 50px;
     line-height: 80%;
     display: block;
+}
+.sign-block .imgUpload img {
+    height: 100%;
+    width: 100%;
 }
 .sign-block .protocal {
     color: #2196f3;

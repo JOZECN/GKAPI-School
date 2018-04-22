@@ -17,4 +17,19 @@ $(function() {
         $('.user-password-old').css("display","none");
         $('.user-password-new').css("display","none");
     })
+
+    $('.loginout-btn a').click(function(){
+        $.ajax({
+            type: 'post',
+            url: '/api/user/logout',
+            data: {
+                sid: $(".user-no span:last-child").text()
+            },
+            dataType: 'json',
+            success: function (response) {
+                alert(response.msg);
+                window.location.href = '/';
+            }
+        })
+    })
 })

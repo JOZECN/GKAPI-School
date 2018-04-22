@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="static/css/normalize.css"/>
     <link rel="stylesheet" type="text/css" href="static/css/login.css">
     <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/authenticate.js"></script>
     <script src="static/js/login.js"></script>
 </head>
 <body>
@@ -18,94 +19,89 @@
     <div class="flip">
         <div class="flip-box">
             <div class="login-block flip-item flip-item-front">
-                <table>
-                    <tr>
-                        <td class="login-title" colspan="3">后台登录</td>
-                    </tr>
-                    <tr class="login-username">
-                        <td width="20%">学&nbsp;&nbsp;号：</td>
-                        <td colspan="2">
-                            <input type="text">
-                        </td>
-                    </tr>
-                    <tr class="login-password">
-                        <td width="20%">密&nbsp;&nbsp;码：</td>
-                        <td colspan="2">
-                            <input type="password">
-                        </td>
-                    </tr>
-                    <tr class="remember">
-                        <td width="20%">7日免登</td>
-                        <td colspan="2">
-                            <input type="checkbox">
-                        </td>
-                    </tr>
-                    <tr class="login-tip">
-                        <td colspan="2">
-                            <a class="signin" href="javascript:void(0)">我要注册</a> | 
-                            <a class="forget" href="javascript:void(0)">忘记密码？</a>
-                        </td>
-                        <td>
-                            <a class="login-btn" href="javascript:void(0)">登录</a>
-                        </td>
-                    </tr>
-                </table>
+                <div class="login-title">后台登录</div>
+                <div class="login-username">
+                    <div class="left">学&nbsp;&nbsp;号：</div>
+                    <div class="right">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="login-password">
+                    <div class="left">密&nbsp;&nbsp;码：</div>
+                    <div class="right">
+                        <input type="password">
+                    </div>
+                </div>
+                <div class="remember">
+                    <div class="left">7日免登</div>
+                    <div class="right">
+                        <input type="checkbox">
+                    </div>
+                </div>
+                <div class="login-tip">
+                    <div class="left">
+                        <a class="signin" href="javascript:void(0)">我要注册</a> | 
+                        <a class="forget" href="javascript:void(0)">忘记密码？</a>
+                    </div>
+                    <div class="right">
+                        <a class="login-btn" href="javascript:void(0)">登录</a>
+                    </div>
+                </div>
             </div>
             <div class="sign-block flip-item flip-item-back">
-                <table>
-                    <tr>
-                        <td class="sign-title" colspan="4">注册</td>
-                    </tr>
-                    <tr class="sign-schoolNo">
-                        <td width="20%">学&nbsp;&nbsp;号：</td>
-                        <td colspan="2">
-                            <input type="text"> *
-                        </td>
-                        <td rowspan="5" style="vertical-align:text-bottom;">
-                            <label class="imgUpload">
-                                <input type="file" style="display:none">
-                                <span>
-                                    +
-                                    <p style="font-size: 10px;line-height: 200%;">(个人头像)*<br>小于60k</p>
-                                </span>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr class="sign-password">
-                        <td width="20%">密&nbsp;&nbsp;码：</td>
-                        <td colspan="2">
-                            <input type="password"> *
-                        </td>
-                    </tr>
-                    <tr class="sign-name">
-                        <td width="20%">姓&nbsp;&nbsp;名：</td>
-                        <td colspan="2">
-                            <input type="text"> *
-                        </td>
-                    </tr>
-                    <tr class="sign-sex">
-                        <td width="20%">性&nbsp;&nbsp;别：</td>
-                        <td colspan="2">
-                            <select>
-                                <option value ="0">男</option>
-                                <option value ="1">女</option>
-                            </select> *
-                        </td>
-                    </tr>
-                    <tr class="sign-card">
-                        <td width="20%">校园卡：</td>
-                        <td colspan="2">
-                            <input type="text"> *
-                        </td>
-                    </tr>
-                    <tr class="sign-tip">
-                        <td colspan="3">
+                    <div class="sign-title" colspan="4">注册</div>
+                    <div class="left">
+                        <div class="sign-schoolNo">
+                            <div class="left">学&nbsp;&nbsp;号：</div>
+                            <div class="right">
+                                <input class="sign-schoolNo-input" type="text" maxlength="10"> *
+                            </div>
+                        </div>
+                        <div class="sign-password">
+                            <div class="left">密&nbsp;&nbsp;码：</div>
+                            <div class="right">
+                                <input type="password" maxlength="12"> *
+                            </div>
+                        </div>
+                        <div class="sign-name">
+                            <div class="left">姓&nbsp;&nbsp;名：</div>
+                            <div class="right">
+                                <input type="text" maxlength="6"> *
+                            </div>
+                        </div>
+                        <div class="sign-sex">
+                            <div class="left">性&nbsp;&nbsp;别：</div>
+                            <div class="right">
+                                <select>
+                                    <option value ="0">男</option>
+                                    <option value ="1">女</option>
+                                </select> *
+                            </div>
+                        </div>
+                        <div class="sign-card">
+                            <div class="left">校园卡：</div>
+                            <div class="right">
+                                <input type="text" maxlength="19" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();"> *
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="imgUpload" onclick="$('.previewImg').click()">
+                            <span>
+                                +
+                                <p style="font-size: 10px;line-height: 200%;">(个人头像)*<br>小于60k</p>
+                            </span>
+                        </div>
+                        <input class="previewImg" type="file" onchange="imgUpload(this)" style="display:none">
+                    </div>
+                    <div class="sign-tip">
+                        <div class="left">
                             <a class="login" href="javascript:void(0)">返回登录</a> | <input type="checkbox" name="approve" class="approve"> 同意<a class="protocal" href="javascript:void(0)">《GKAPI协议》</a>
-                        </td>
-                        <td>
+                        </div>
+                        <div class="right">
                             <a class="sign-btn" href="javascript:void(0)">注册</a>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                 </table>
             </div>
         </div>

@@ -15,6 +15,7 @@ var port = initConfig.network.port;
 //引入接口
 var main = require('./routers/main');
 var userApi = require('./routers/api/userApi');
+var fileApi = require('./routers/api/fileApi');
 
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
 app.use(morgan('short', {stream: accessLogStream}));
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/static',express.static(path.join(__dirname, './public')));
+app.use('/user/static',express.static(path.join(__dirname, './public')));
 app.use('/ad/static',express.static(path.join(__dirname, './public')));
 
 //swig配置
@@ -38,6 +40,7 @@ swig.setDefaults({cache:false});
 //后端路由
 app.use('/', main);
 app.use('/api/user', userApi);
+app.use('/api/file', fileApi);
 
 //监听端口
 try {

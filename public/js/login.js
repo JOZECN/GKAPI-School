@@ -25,13 +25,68 @@ $(function() {
                 },
                 dataType: 'json',
                 success: function (response) {
-                    if(response.status != 1){
+                    if(response.status){
                         alert(response.msg);
+                        window.location.href='\\user\\' + $.trim($('.login-username input').val());
                     }else{
                         alert(response.msg);
                     }
                 }
             })
         }
+    });
+
+    $('.sign-btn').click(function(){
+        if(!$.trim($('.sign-schoolNo-input').val()) || !$('.previewImg').val() || !$.trim($('.sign-password input').val()) || !$.trim($('.sign-name input').val()) || !$.trim($('.sign-card input').val())){
+            console.log($.trim($('.sign-schoolNo-input').val()));
+            console.log($.trim($('.previewImg').val()));
+            console.log($.trim($('.sign-password input').val()));
+            console.log($.trim($('.sign-name input').val()));
+            console.log($('.sign-sex select option:selected').val());
+            console.log($.trim($('.sign-card input').val()));
+            alert("请填写完整！");
+        }else if(!$('.approve').prop('checked')){
+            alert("请同意《GKAPI协议》！");
+        }else {
+            var sid = $.trim($('.sign-schoolNo-input').val());
+            var pwd = $.trim($('.sign-password input').val());
+            var sname = $.trim($('.sign-name input').val());
+            var sex = $('.sign-sex select option:selected').val();
+            var card = $.trim($('.sign-card input').val());
+            var file = $('.previewImg').get(0).files[0];
+
+            var formData = new FormData();
+            formData.append("file", file);
+            var confirm = window.confirm("务必确认信息填写正确，点击”确认“将无法更改！");
+            if(confirm == true){
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/file/uploadUserImg',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if(response.status){
+                            alert(response.url)
+                        }else{
+                            alert(response.msg)
+                        }
+                    }
+                });
+            }
+        }
     })
 })
+
+function imgUpload(file){
+    if(file.files && file.files[0]){
+        $(".imgUpload").html('<img>');
+        var img = $(".imgUpload img");
+        var reader = new FileReader();
+        reader.onload = function(evt){
+            img.attr("src",evt.target.result);
+        }
+        reader.readAsDataURL(file.files[0]);
+    }
+}

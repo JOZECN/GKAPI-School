@@ -11,6 +11,7 @@ var userSchema = new mongoose.Schema({
     major: { type: String, default: '' },
     identity: { type: String, default: '' },
     department: { type: String, default: '' },
+    fingerprint: { type: String, default: '' },
     uid: { type: String },
     lasttime: { type: Date, default: Date.now },
     token: { type: String, default: '' },
