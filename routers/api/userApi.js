@@ -42,6 +42,7 @@ router.post("/register", function(req, res, next){
                         salt: salt,
                         hash: hash,
                         sex: req.body.sex,
+                        card: req.body.card,
                         img: req.body.img,
                         regno: regno
                     }).save().then(function(){
@@ -173,5 +174,20 @@ router.post("/logout",function(req, res, next){
 })
 
 
+router.post("/sidCheck", function(req, res, next){
+    var sid = req.body.sid;
+    User.findOne({ sid: sid }).then(function(rs){
+        if(rs){
+            return res.json({
+                status: 0,
+                msg: "账号已存在！"
+            })
+        }else {
+            return res.json({
+                status: 1
+            })
+        }
+    })
+})
 
 module.exports = router;

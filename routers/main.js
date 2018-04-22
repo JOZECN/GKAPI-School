@@ -17,13 +17,16 @@ router.get('/user/:sid',function(req,res,next){
                     if(rs.token === token){
                         res.render('main/user',rs);
                     }else{
+                        res.clearCookie('GK_value');
                         res.render('main/404');
                     }
                 }else{
+                    res.clearCookie('GK_value');
                     res.render('main/404');
                 }
             })
         }else {
+            res.clearCookie('GK_value');
             res.render('main/404');
         }
     }else{

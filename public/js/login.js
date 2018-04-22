@@ -1,11 +1,11 @@
 $(function() {
-    $('.signin').click(function(){
+    $('.signin').click(function (){
         $('.flip-item-front').css("z-index","1");
         $('.flip-item-front').css("transform","rotateY(180deg)");
         $('.flip-item-back').css("z-index","2");
         $('.flip-item-back').css("transform","rotateY(0deg)");
     });
-    $('.login').click(function(){
+    $('.login').click(function (){
         $('.flip-item-front').css("z-index","2");
         $('.flip-item-front').css("transform","rotateY(0deg)");
         $('.flip-item-back').css("z-index","1");
@@ -38,12 +38,6 @@ $(function() {
 
     $('.sign-btn').click(function(){
         if(!$.trim($('.sign-schoolNo-input').val()) || !$('.previewImg').val() || !$.trim($('.sign-password input').val()) || !$.trim($('.sign-name input').val()) || !$.trim($('.sign-card input').val())){
-            console.log($.trim($('.sign-schoolNo-input').val()));
-            console.log($.trim($('.previewImg').val()));
-            console.log($.trim($('.sign-password input').val()));
-            console.log($.trim($('.sign-name input').val()));
-            console.log($('.sign-sex select option:selected').val());
-            console.log($.trim($('.sign-card input').val()));
             alert("请填写完整！");
         }else if(!$('.approve').prop('checked')){
             alert("请同意《GKAPI协议》！");
@@ -61,19 +55,56 @@ $(function() {
             if(confirm == true){
                 $.ajax({
                     type: 'POST',
-                    url: '/api/file/uploadUserImg',
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
+                    url: '/api/user/sidCheck',
+                    data: {
+                        sid: sid
+                    },
+                    dataType: 'json',
                     success: function (response) {
                         if(response.status){
-                            alert(response.url)
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/file/uploadUserImg',
+                                data: formData,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: function (response) {
+                                    if(response.status){
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '/api/user/register',
+                                            data: {
+                                                sid: sid,
+                                                pwd: pwd,
+                                                sname: sname,
+                                                sex: sex,
+                                                card: card,
+                                                img: response.url
+                                            },
+                                            dataType: 'json',
+                                            success: function (response) {
+                                                if(response.status){
+                                                    alert(response.msg)
+                                                    $('.flip-item-front').css("z-index","2");
+                                                    $('.flip-item-front').css("transform","rotateY(0deg)");
+                                                    $('.flip-item-back').css("z-index","1");
+                                                    $('.flip-item-back').css("transform","rotateY(180deg)");
+                                                }else{
+                                                    alert(response.msg)
+                                                }
+                                            }
+                                        })
+                                    }else{
+                                        alert(response.msg)
+                                    }
+                                }
+                            })
                         }else{
                             alert(response.msg)
                         }
                     }
-                });
+                })
             }
         }
     })
