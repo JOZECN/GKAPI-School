@@ -64,7 +64,7 @@ $(function() {
                         if(response.status){
                             $.ajax({
                                 type: 'POST',
-                                url: '/api/file/uploadUserImg',
+                                url: '/api/file/uploadui',
                                 data: formData,
                                 cache: false,
                                 contentType: false,

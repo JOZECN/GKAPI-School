@@ -14,7 +14,7 @@ router.post("/register", function(req, res, next){
         })
     }else {
         User.find({"sid":req.body.sid}).then(function(rs){
-            if(rs != ''){
+            if(rs){
                 return res.json({
                     status: 0,
                     msg: "该学号已存在！"
@@ -69,7 +69,7 @@ router.post("/login", function(req, res, next){
         User.findOne({
             sid: req.body.sid
         }).then(function(rs){
-            if(rs != ''){
+            if(rs){
                 var hash = crypto.pbkdf2Sync(req.body.pwd,rs.salt,1000,64,'sha512').toString('hex');
                 if(hash === rs.hash){
                     var expiry = new Date();
@@ -152,7 +152,7 @@ router.post("/authenticate", function(req, res, next){
 router.post("/logout",function(req, res, next){
     var sid = req.body.sid;
     User.findOne({ sid: sid }).then(function(rs){
-        if(rs != ''){
+        if(rs){
             User.update({
                 sid: sid
             },{
