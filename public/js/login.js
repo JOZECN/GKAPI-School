@@ -109,15 +109,3 @@ $(function() {
         }
     })
 })
-
-function imgUpload(file){
-    if(file.files && file.files[0]){
-        $(".imgUpload").html('<img>');
-        var img = $(".imgUpload img");
-        var reader = new FileReader();
-        reader.onload = function(evt){
-            img.attr("src",evt.target.result);
-        }
-        reader.readAsDataURL(file.files[0]);
-    }
-}
